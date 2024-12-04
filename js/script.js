@@ -1,75 +1,95 @@
-// Smooth Scrolling
+// Smooth Scrolling for Anchor Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+    anchor.addEventListener("click", event => {
+        event.preventDefault();
+        const targetSection = document.querySelector(anchor.getAttribute("href"));
+        if (targetSection) {
+            targetSection.scrollIntoView({ behavior: "smooth" });
+        }
     });
 });
 
-    // Get the current year
-    const currentYear = new Date().getFullYear();
-    // Update the span with ID 'current-year' to the current year
-    document.getElementById('current-year').textContent = currentYear;
+// Hamburger Menu Toggle
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.querySelector(".nav-links");
+if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => navLinks.classList.toggle("active"));
+}
 
-
-// Add event listener for form submission
-document.getElementById("contact-form").addEventListener("submit", async function (event) {
-    event.preventDefault(); // Prevent default form submission behavior
-
-    // Select form and inputs
-    const form = event.target;
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const message = document.getElementById("message").value.trim();
-
-    // Simple validation (check if fields are empty)
-    if (!name || !email || !message) {
-        alert("אנא מלא את כל השדות לפני שליחת הטופס.");
-        return;
+// Scroll to Specific Section
+const scrollToSection = id => {
+    const section = document.getElementById(id);
+    if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
     }
+};
 
-    try {
-        // Send form data using Formspree
-        const response = await fetch(form.action, {
-            method: form.method,
-            body: new FormData(form),
-            headers: { Accept: "application/json" },
-        });
+// Update Footer with Current Year
+const currentYearElement = document.getElementById("current-year");
+if (currentYearElement) {
+    currentYearElement.textContent = new Date().getFullYear();
+}
 
-        // Handle response
-        if (response.ok) {
-            form.reset(); // Clear the form fields
-            showAlert("תודה! הודעתך נשלחה בהצלחה.", "success");
-        } else {
-            throw new Error("Failed to send the form");
+// Contact Form Submission
+const contactForm = document.getElementById("contact-form");
+if (contactForm) {
+    contactForm.addEventListener("submit", async event => {
+        event.preventDefault();
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData.entries());
+
+        if (!data.name || !data.email || !data.message) {
+            showAlert("אנא מלא את כל השדות לפני שליחת הטופס.", "error");
+            return;
         }
-    } catch (error) {
-        showAlert("אירעה שגיאה. אנא נסה שנית.", "error");
-    }
-});
 
+        try {
+            const response = await fetch(contactForm.action, {
+                method: contactForm.method,
+                body: formData,
+                headers: { Accept: "application/json" },
+            });
+
+            if (response.ok) {
+                contactForm.reset();
+                showAlert("תודה! הודעתך נשלחה בהצלחה.", "success");
+            } else {
+                throw new Error("Failed to send the form.");
+            }
+        } catch {
+            showAlert("אירעה שגיאה. אנא נסה שנית.", "error");
+        }
+    });
+}
+
+// Display Alert Messages
 function showAlert(message, type) {
-    // Create alert element
     const alertBox = document.createElement("div");
     alertBox.textContent = message;
-    alertBox.className = `alert ${type}`; // Add success or error class
-
-    // Append alert to the body
+    alertBox.className = `alert ${type}`;
     document.body.appendChild(alertBox);
 
-    // Make alert visible and trigger fade-in animation
+    setTimeout(() => (alertBox.style.opacity = "1"), 100);
     setTimeout(() => {
-        alertBox.style.display = "block";
-        alertBox.style.opacity = "1";
-    }, 100);
-
-    // Automatically remove the alert after 5 seconds
-    setTimeout(() => {
-        alertBox.style.opacity = "0"; // Trigger fade-out animation
-        setTimeout(() => {
-            alertBox.remove(); // Remove from DOM after fade-out
-        }, 500);
+        alertBox.style.opacity = "0";
+        setTimeout(() => alertBox.remove(), 500);
     }, 5000);
 }
+
+// FAQ Toggle Functionality
+document.querySelectorAll(".faq-question").forEach(question => {
+    question.addEventListener("click", () => {
+        const answer = question.nextElementSibling;
+        const isActive = answer && answer.style.display === "block";
+
+        // Close all other answers
+        document.querySelectorAll(".faq-answer").forEach(el => (el.style.display = "none"));
+        document.querySelectorAll(".faq-question").forEach(el => el.classList.remove("active"));
+
+        // Toggle current answer
+        if (answer && !isActive) {
+            answer.style.display = "block";
+            question.classList.add("active");
+        }
+    });
+});

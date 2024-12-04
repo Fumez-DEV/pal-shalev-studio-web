@@ -9,49 +9,142 @@
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&family=Alef:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar -->
-    <header>
-        <nav class="navbar">
-            <div class="logo-container">
-                <img src="images/pal-shalev-logo.png" alt="Pal Fitness Club Logo" class="logo">
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home"><i class="fas fa-home"></i> בית</a></li>
-                <li><a href="#about"><i class="fas fa-info-circle"></i> מי אנחנו</a></li>
-                <li><a href="#services"><i class="fas fa-dumbbell"></i> השירותים שלנו</a></li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i> צור קשר</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="hero" style="background-image: url('images/pal-shalev-hero.jpg');">
-        <div class="overlay">
-            <h1>פאל פיטנס קלאב</h1>
-            <p>האימונים הכי מקצועיים בבאר יעקב</p>
-            <a href="#contact" class="btn">הצטרפו עכשיו</a>
-        </div>
-    </section>
+<!-- Navbar -->
+<nav id="navbar">
+    <div class="navbar-container">
+        <!-- Logo -->
+        <a href="#hero" class="logo">
+            <img src="images/pal-shalev-logo.png" alt="Pal Shalev Logo">
+        </a>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="#hero"><i class="fas fa-home"></i> דף הבית</a></li>
+            <li><a href="#about"><i class="fas fa-user"></i> אודות</a></li>
+            <li><a href="#services"><i class="fas fa-dumbbell"></i> שירותים</a></li>
+            <li><a href="#faq"><i class="fas fa-question-circle"></i> שאלות נפוצות</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> צור קשר</a></li>
+        </ul>
+
+        <!-- Hamburger Menu for Mobile -->
+        <button class="hamburger" id="hamburger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+    </div>
+</nav>
+
+
+<!-- Hero Section -->
+<section id="hero">
+    <div class="hero-container">
+        <!-- Studio Logo -->
+        <img src="images/pal-shalev-logo.png" alt="Pal Fitness Club Logo" class="hero-logo">
+
+        <!-- Tagline -->
+        <h1>המקום שבו מתאמנים הופכים לאלופים!</h1>
+
+        <!-- Call-to-Action Button -->
+        <button onclick="scrollToContact()">התחילו עכשיו</button>
+    </div>
+</section>
+
     
 
-    <!-- About Section -->
-    <section id="about">
+<!-- About Us Section -->
+<section id="about">
+    <div class="about-container">
         <h2>מי אנחנו?</h2>
-        <p>
-            פאל פיטנס קלאב מציע אימונים אישיים, קבוצתיים וזוגיים לבניית גוף חזק ובריא יותר. המטרה שלנו היא לעזור לכם להתקדם צעד אחר צעד לעבר המטרות שלכם.
-        </p>
-    </section>
+        <div class="about-content">
+            <!-- Image -->
+            <div class="about-image">
+                <img src="images/studio-pic.jpg" alt="Studio Photo">
+            </div>
+            <!-- Text Content -->
+            <div class="about-text">
+                <p>
+                    פאל פיטנס קלאב הוקם במטרה לעזור לאנשים להשיג את מטרותיהם הבריאותיות והפיזיות. 
+                    אנו מציעים אימונים אישיים, קבוצתיים וזוגיים עם מיטב המדריכים המוסמכים בתחום. 
+                </p>
+                <p>
+                    בסטודיו שלנו תמצאו ציוד חדיש, סביבה מעודדת ותמיכה אישית לאורך כל הדרך.
+                    המוטו שלנו: "כל צעד קטן מקרב אותנו אל המטרה הגדולה!"
+                </p>
+                <!-- CTA Button -->
+                <button onclick="scrollToServices()">גלה את השירותים שלנו</button>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- Services Section -->
-    <section id="services">
+
+<!-- Services Section -->
+<section id="services">
+    <div class="services-container">
         <h2>השירותים שלנו</h2>
-        <ul>
-            <li>אימונים אישיים</li>
-            <li>אימוני זוגות</li>
-            <li>אימונים קבוצתיים</li>
-            <li>בניית תכניות מותאמות אישית</li>
-        </ul>
-    </section>
+        <div class="services-grid">
+            <!-- Service 1 -->
+            <div class="service-item">
+                <i class="fas fa-user"></i>
+                <h3>אימונים אישיים</h3>
+                <p>תוכנית אימון מותאמת אישית לכל מתאמן, בליווי צמוד לאורך כל הדרך.</p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-item">
+                <i class="fas fa-users"></i>
+                <h3>אימונים קבוצתיים</h3>
+                <p>חווית אימון עם קבוצה מעודדת ומדריך מקצועי, בסטודיו מאובזר.</p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-item">
+                <i class="fas fa-heart"></i>
+                <h3>תזונה מותאמת אישית</h3>
+                <p>ייעוץ תזונתי מותאם לכל מטרה - בריאות, חיטוב או עלייה במסת שריר.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- FAQ Section -->
+<section id="faq">
+    <div class="faq-container">
+        <h2>שאלות נפוצות</h2>
+
+        <div class="faq-item">
+            <button class="faq-question">מהם שעות הפעילות של הסטודיו?</button>
+            <div class="faq-answer">
+                <p>הסטודיו פתוח בימים ראשון עד חמישי בין השעות 09:00 - 21:00, ובימי שישי בין השעות 08:00 - 14:00.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">האם הסטודיו מתאים למתאמנים מתחילים?</button>
+            <div class="faq-answer">
+                <p>בהחלט! אנו מתאימים תכניות אישיות למתאמנים בכל הרמות, כולל מתחילים.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">האם יש לכם שירותי תזונה?</button>
+            <div class="faq-answer">
+                <p>כן, אנו מציעים ייעוץ תזונתי מותאם אישית כחלק מתכניות האימון שלנו.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">איך ניתן ליצור קשר עם הסטודיו?</button>
+            <div class="faq-answer">
+                <p>ניתן ליצור קשר בטלפון 050-299-5499 או במייל palshalev@gmail.com.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 <!-- Contact Section -->
@@ -66,7 +159,7 @@
             
             <label for="email">דוא"ל:</label>
             <input type="email" id="email" name="email" placeholder="הזן את כתובת הדוא&quot;ל שלך" required>
-                        
+
             <label for="message">הודעה:</label>
             <textarea id="message" name="message" placeholder="הזן את הודעתך כאן..." required></textarea>
             
@@ -142,6 +235,7 @@
         </div>
     </footer>
 
+    
     <script src="js/script.js"></script>
 </body>
 </html>
