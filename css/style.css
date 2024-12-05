@@ -220,8 +220,8 @@ section ul li:before {
 /* Hero Section */
 #hero {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-        url('/images/pal-shalev-hero.jpg') no-repeat center center/cover; /* Dark overlay with background image */
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), 
+        url('/images/pal-shalev-hero.jpg') no-repeat center center/cover;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -231,69 +231,82 @@ section ul li:before {
     color: #ffd700; /* Gold text */
     font-family: 'Assistant', sans-serif;
     padding: 20px;
-    animation: fadeIn 2s ease-in; /* Smooth fade-in animation */
+    animation: fadeIn 2s ease-in;
+    overflow: hidden; /* Ensure proper alignment */
 }
 
 /* Hero Content Container */
 .hero-container {
-    background: rgba(0, 0, 0, 0.8); /* Dark overlay for better readability */
-    padding: 30px 20px;
-    border-radius: 15px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8); /* Enhanced shadow */
-    max-width: 600px;
+    padding: 40px 30px;
     text-align: center;
-    animation: slideUp 1.5s ease-in-out; /* Smooth slide-up effect */
+    max-width: 700px;
+    background: rgba(0, 0, 0, 0.6); /* Darker overlay for readability */
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 /* Logo */
 .hero-logo {
-    max-width: 120px;
+    max-width: 100px;
     margin-bottom: 20px;
     border-radius: 50%; /* Circular logo */
-    border: 4px solid #ffd700; /* Gold border */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.8); /* Added shadow */
-    transition: transform 0.3s ease;
+    border: 5px solid #ffd700; /* Gold border */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .hero-logo:hover {
-    transform: scale(1.1); /* Zoom effect */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9); /* Shadow intensifies */
+    transform: scale(1.15); /* Bigger zoom effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Enhanced shadow */
 }
 
-/* Tagline */
+/* Studio Name */
 #hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
+    font-size: 3.2rem;
+    margin-bottom: 10px;
+    color: #ffd700; /* Gold color */
+    font-weight: 700;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Text shadow for depth */
+    letter-spacing: 1.5px;
+}
+
+/* Tagline (h2) */
+#hero h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
     line-height: 1.5;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Enhanced shadow for visibility */
-    color: #ffd700; /* Gold color for the tagline */
-    letter-spacing: 1.2px;
+    color: #ffffff; /* White text */
+    letter-spacing: 1px;
+    text-decoration: none; /* Removes the underline */
+    border: none; /* Removes any border that resembles an underline */
+    font-weight: 400; /* Balanced weight for better readability */
 }
 
 /* Call-to-Action Button */
 #hero button {
-    padding: 15px 40px;
-    font-size: 1.3rem;
+    padding: 15px 50px;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #000; /* Black text */
     background-color: #ffd700; /* Gold background */
     border: none;
-    border-radius: 8px;
+    border-radius: 40px; /* Rounded button for modern style */
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.6); /* Button shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    margin-top: 40px; /* Keeps button visually balanced */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 #hero button:hover {
-    background-color: #fff; /* White background on hover */
-    color: #000; /* Black text on hover */
-    transform: scale(1.1); /* Slightly larger on hover */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8); /* Stronger shadow */
+    background-color: #fff; /* White background */
+    color: #000; /* Black text */
+    transform: translateY(-5px) scale(1.08); /* Slight lift and scale effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 #hero button:active {
-    transform: scale(0.95); /* Slightly smaller on click */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); /* Reduced shadow */
+    transform: translateY(3px) scale(0.95); /* Press effect */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Animations */
@@ -306,33 +319,26 @@ section ul li:before {
     }
 }
 
-@keyframes slideUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
 /* Responsive Design for Tablets */
 @media (max-width: 768px) {
     #hero {
-        height: 80vh; /* Reduced height for smaller screens */
+        height: 85vh;
     }
 
     #hero h1 {
-        font-size: 2.4rem; /* Slightly smaller font */
+        font-size: 2.6rem;
+    }
+
+    #hero h2 {
+        font-size: 1.5rem;
     }
 
     .hero-logo {
-        max-width: 100px; /* Smaller logo */
+        max-width: 80px;
     }
 
     #hero button {
-        font-size: 1.1rem; /* Smaller button size */
+        font-size: 1rem;
         padding: 12px 30px;
     }
 }
@@ -340,28 +346,28 @@ section ul li:before {
 /* Responsive Design for Mobile Screens */
 @media (max-width: 480px) {
     #hero {
-        height: 70vh; /* Further reduced height for very small screens */
+        height: 80vh;
         padding: 15px;
     }
 
     #hero h1 {
-        font-size: 2rem; /* Smaller font for tagline */
-        line-height: 1.4;
+        font-size: 2.2rem;
+    }
+
+    #hero h2 {
+        font-size: 1.3rem;
     }
 
     .hero-logo {
-        max-width: 80px; /* Even smaller logo */
+        max-width: 70px;
     }
 
     #hero button {
-        font-size: 1rem; /* Smaller button */
+        font-size: 0.9rem;
         padding: 10px 20px;
     }
-
-    .hero-container {
-        padding: 20px 15px; /* Adjust padding */
-    }
 }
+
 
 /* About Us Section */
 #about {
@@ -470,51 +476,197 @@ section ul li:before {
     transform: scale(0.95); /* Shrink effect on click */
 }
 
-/* Responsive Design for Tablets */
+/* General Mobile Optimization */
 @media (max-width: 768px) {
+    #about h2 {
+        font-size: 2rem; /* Smaller font for heading */
+        margin-bottom: 20px; /* Reduced margin */
+    }
+
     .about-content {
-        flex-direction: column;
-        text-align: center; /* Center-align for smaller screens */
-        gap: 30px; /* Slightly less spacing for smaller screens */
+        flex-direction: column; /* Stack image and text */
+        text-align: center; /* Center-align all elements */
+        gap: 20px; /* Adjust spacing */
+    }
+
+    .about-image {
+        max-width: 100%; /* Image takes full width */
+    }
+
+    .about-image img {
+        max-width: 90%; /* Reduce image size slightly */
+        margin: 0 auto; /* Center image */
     }
 
     .about-text {
         text-align: center; /* Center-align text */
-    }
-
-    .about-text button {
-        font-size: 1.2rem; /* Slightly smaller text size */
-        padding: 12px 25px; /* Adjusted padding for smaller buttons */
-    }
-
-    .about-image img {
-        max-width: 250px; /* Reduced image size */
-    }
-}
-
-/* Responsive Design for Mobile Screens */
-@media (max-width: 480px) {
-    #about h2 {
-        font-size: 2.5rem; /* Smaller heading font size */
-        margin-bottom: 30px; /* Reduced margin below the heading */
-    }
-
-    .about-content {
-        gap: 20px; /* Reduced spacing for very small screens */
+        padding: 0; /* Remove padding for clean layout */
     }
 
     .about-text p {
-        font-size: 1.1rem; /* Slightly smaller text */
-        line-height: 1.8; /* Reduced line spacing */
+        font-size: 1rem; /* Adjust font size for readability */
+        line-height: 1.5; /* Reduced line spacing */
+        margin-bottom: 15px;
+        color: #eaeaea; /* Slightly lighter color for better contrast */
     }
 
     .about-text button {
-        font-size: 1rem; /* Smaller button text size */
-        padding: 10px 20px; /* Smaller button dimensions */
+        font-size: 1.1rem; /* Adjust button size */
+        padding: 12px 20px; /* Reduced padding */
+        width: 100%; /* Button takes full width */
+    }
+}
+
+/* For Very Small Screens (Phones) */
+@media (max-width: 480px) {
+    #about h2 {
+        font-size: 1.8rem; /* Smaller font size for heading */
+        margin-bottom: 15px; /* Reduced spacing */
+    }
+
+    .about-content {
+        gap: 15px; /* Compact spacing */
+    }
+
+    .about-text p {
+        font-size: 0.9rem; /* Smaller font for text */
+        line-height: 1.4; /* Compact line spacing */
+    }
+
+    .about-text button {
+        font-size: 1rem; /* Smaller button text */
+        padding: 10px 15px; /* Compact button size */
     }
 
     .about-image img {
-        max-width: 200px; /* Further reduced image size */
+        max-width: 80%; /* Reduced image size */
+    }
+}
+
+/* Improved Hover Image for Mobile */
+.about-image {
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto; /* Center the image */
+    border-radius: 15px; /* Maintain rounded corners */
+    overflow: hidden;
+}
+
+.about-image img {
+    max-width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.about-image img.hover-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.about-image:hover img.hover-effect {
+    opacity: 1; /* Show hover image */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+
+/* Testimonials Section */
+#testimonials {
+    background-color: #000; /* Black background */
+    color: #ffd700; /* Gold text */
+    padding: 60px 20px;
+    text-align: center;
+    font-family: 'Assistant', sans-serif;
+}
+
+#testimonials h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 3px solid #ffd700;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* Testimonial Container */
+.testimonial-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Testimonial Content */
+.testimonial-content {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #222; /* Slightly lighter black */
+    padding: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); /* Shadow for depth */
+    position: relative;
+    max-height: 200px; /* Prevent content overflow */
+}
+
+#testimonial-display {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 20px; /* Space between testimonials for smooth transitions */
+}
+
+.testimonial-item {
+    flex: 0 0 100%;
+    opacity: 0.9;
+    text-align: center;
+    color: #fff; /* White text */
+}
+
+.testimonial-item p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.testimonial-item .author {
+    font-weight: bold;
+    color: #ffd700; /* Gold for author name */
+}
+
+/* Navigation Arrows */
+.testimonial-nav {
+    background: none;
+    border: none;
+    color: #ffd700; /* Gold */
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+    z-index: 10;
+}
+
+.testimonial-nav:hover {
+    transform: scale(1.2);
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #testimonials h2 {
+        font-size: 2rem;
+    }
+
+    .testimonial-item p {
+        font-size: 1rem;
+    }
+
+    .testimonial-content {
+        padding: 20px;
     }
 }
 
@@ -955,20 +1107,20 @@ form button:hover {
 .footer-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly; /* Evenly space items */
     align-items: flex-start;
-    gap: 20px;
+    gap: 30px;
 }
 
 /* Logo and About Section */
 .footer-logo {
     flex: 1;
-    max-width: 300px;
-    text-align: center; /* Center-align for mobile */
+    max-width: 250px; /* Adjusted for better alignment */
+    text-align: center; /* Center-align for symmetry */
 }
 
 .footer-logo img {
-    height: 80px;
+    height: 90px; /* Slightly larger logo */
     width: auto;
     margin-bottom: 10px;
     border-radius: 50%;
@@ -977,11 +1129,10 @@ form button:hover {
 }
 
 .footer-logo p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     line-height: 1.6;
     margin-top: 10px;
     color: #ddd; /* Light text */
-    text-align: center; /* Center text for readability */
 }
 
 /* Section Titles */
@@ -996,7 +1147,7 @@ form button:hover {
     border-bottom: 2px solid #ffd700;
     display: inline-block;
     padding-bottom: 5px;
-    text-align: center; /* Center-align headings for mobile */
+    text-align: right; /* Center-align headings for mobile */
 }
 
 /* Links and Lists */
@@ -1004,6 +1155,7 @@ form button:hover {
 .footer-social ul,
 .footer-privacy ul {
     list-style: none;
+    text-align: right; /* Center-align headings for mobile */
     padding: 0;
     margin: 0;
 }
@@ -1011,8 +1163,9 @@ form button:hover {
 .footer-menu li,
 .footer-social li,
 .footer-privacy li {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     text-align: center; /* Center-align list items */
+    text-align: right; /* Center-align headings for mobile */
 }
 
 .footer-menu li a,
@@ -1020,23 +1173,23 @@ form button:hover {
 .footer-privacy li a {
     color: #ffd700; /* Gold */
     text-decoration: none;
+    text-align: right; /* Center-align headings for mobile */
     font-size: 1rem;
-    display: inline-block; /* Adjust display for better alignment */
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .footer-menu li a i,
 .footer-social li a i,
 .footer-privacy li a i {
-    margin-left: 8px; /* Spacing between icon and text */
-    font-size: 1.2rem; /* Slightly smaller icons for mobile */
+    margin-left: 5px; /* Spacing between icon and text */
+    font-size: 1.2rem; /* Icon size for uniformity */
 }
 
 .footer-menu li a:hover,
 .footer-social li a:hover,
 .footer-privacy li a:hover {
     color: #fff; /* White on hover */
-    transform: translateX(-3px); /* Slight hover animation */
+    transform: translateX(-3px); /* Subtle hover animation */
 }
 
 /* Bottom Section */
@@ -1045,7 +1198,7 @@ form button:hover {
     padding-top: 15px;
     border-top: 1px solid #444; /* Subtle divider */
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: #aaa; /* Light text */
 }
 
@@ -1089,27 +1242,31 @@ form button:hover {
     }
 }
 
-/* For Extra Small Screens */
 @media (max-width: 480px) {
     .footer-logo img {
-        height: 70px; /* Slightly smaller logo */
+        height: 60px; /* Smaller logo for very small screens */
     }
 
     .footer-logo p {
-        font-size: 0.8rem; /* Adjust text size */
+        font-size: 0.85rem; /* Smaller text for compactness */
     }
 
     .footer-menu li a,
     .footer-social li a,
     .footer-privacy li a {
-        font-size: 0.9rem; /* Smaller font size */
+        font-size: 0.85rem; /* Adjust text size for small screens */
+    }
+
+    .footer-menu li a i,
+    .footer-social li a i,
+    .footer-privacy li a i {
+        font-size: 0.9rem; /* Smaller icons for small screens */
     }
 
     .footer-bottom {
-        font-size: 0.7rem; /* Adjust font size for bottom section */
+        font-size: 0.75rem; /* Adjust bottom text size */
     }
 }
-
 
 /* Alert Messages */
 .alert {

@@ -18,14 +18,16 @@
             <img src="images/pal-shalev-logo.png" alt="Pal Shalev Logo">
         </a>
 
-        <!-- Navigation Links -->
-        <ul class="nav-links">
-            <li><a href="#hero"><i class="fas fa-home"></i> דף הבית</a></li>
-            <li><a href="#about"><i class="fas fa-user"></i> אודות</a></li>
-            <li><a href="#services"><i class="fas fa-dumbbell"></i> שירותים</a></li>
-            <li><a href="#faq"><i class="fas fa-question-circle"></i> שאלות נפוצות</a></li>
-            <li><a href="#contact"><i class="fas fa-envelope"></i> צור קשר</a></li>
-        </ul>
+<!-- Navigation Links -->
+<ul class="nav-links">
+    <li><a href="#hero"><i class="fas fa-home"></i> בית</a></li>
+    <li><a href="#about"><i class="fas fa-user"></i> אודות</a></li>
+    <li><a href="#services"><i class="fas fa-dumbbell"></i> שירותים</a></li>
+    <li><a href="#faq"><i class="fas fa-question-circle"></i> שאלות נפוצות</a></li>
+    <li><a href="#testimonials"><i class="fas fa-thumbs-up"></i> המלצות</a></li>
+    <li><a href="#contact"><i class="fas fa-envelope"></i> צור קשר</a></li>
+</ul>
+
 
         <!-- Hamburger Menu for Mobile -->
         <button class="hamburger" id="hamburger">
@@ -41,18 +43,29 @@
 <section id="hero">
     <div class="hero-container">
         <!-- Studio Logo -->
-        <img src="images/pal-shalev-logo.png" alt="Pal Fitness Club Logo" class="hero-logo">
+        <div class="hero-logo-container">
+            <img src="images/pal-shalev-logo.png" alt="Pal Fitness Club Logo" class="hero-logo">
+        </div>
+
+        <!-- Studio Name -->
+        <div class="hero-title">
+            <h1>פאל פיטנס קלאב</h1>
+        </div>
 
         <!-- Tagline -->
-        <h1>המקום שבו מתאמנים הופכים לאלופים!</h1>
+        <div class="hero-tagline">
+            <h2>המקום שבו מתאמנים הופכים לאלופים!</h2>
+        </div>
 
         <!-- Call-to-Action Button -->
-        <button onclick="scrollToContact()">התחילו עכשיו</button>
+        <div class="hero-cta">
+            <button onclick="scrollToContact()">התחילו עכשיו</button>
+        </div>
     </div>
 </section>
 
-    
 
+    
 <!-- About Us Section -->
 <section id="about">
     <div class="about-container">
@@ -120,39 +133,31 @@
 
 <!-- FAQ Section -->
 <section id="faq">
-    <div class="faq-container">
-        <h2>שאלות נפוצות</h2>
-
-        <div class="faq-item">
-            <button class="faq-question">מהם שעות הפעילות של הסטודיו?</button>
-            <div class="faq-answer">
-                <p>הסטודיו פתוח בימים ראשון עד חמישי בין השעות 09:00 - 21:00, ובימי שישי בין השעות 08:00 - 14:00.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question">האם הסטודיו מתאים למתאמנים מתחילים?</button>
-            <div class="faq-answer">
-                <p>בהחלט! אנו מתאימים תכניות אישיות למתאמנים בכל הרמות, כולל מתחילים.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question">האם יש לכם שירותי תזונה?</button>
-            <div class="faq-answer">
-                <p>כן, אנו מציעים ייעוץ תזונתי מותאם אישית כחלק מתכניות האימון שלנו.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question">איך ניתן ליצור קשר עם הסטודיו?</button>
-            <div class="faq-answer">
-                <p>ניתן ליצור קשר בטלפון 050-299-5499 או במייל palshalev@gmail.com.</p>
-            </div>
-        </div>
+    <h2>שאלות נפוצות</h2>
+    <div class="faq-container" id="faq-container">
+        <!-- FAQs will be dynamically loaded here -->
     </div>
 </section>
 
+<!-- Testimonials Section -->
+<section id="testimonials">
+    <h2>לקוחות מרוצים</h2>
+    <div class="testimonial-container">
+        <button id="prev-testimonial" class="testimonial-nav" aria-label="Previous Testimonial">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="testimonial-content">
+            <div id="testimonial-display">
+                <!-- Testimonials will be dynamically loaded here -->
+            </div>
+        </div>
+
+        <button id="next-testimonial" class="testimonial-nav" aria-label="Next Testimonial">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+    </div>
+</section>
 
 <!-- Contact Section -->
 <section id="contact">
