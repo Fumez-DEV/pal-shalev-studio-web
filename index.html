@@ -6,8 +6,10 @@
     <title>פאל פיטנס קלאב - אימונים אישיים, קבוצתיים ותזונה מותאמת אישית</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&family=Alef:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&family=Alef:wght@400;700&display=swap" rel="stylesheet">    
     <meta name="description" content="פאל פיטנס קלאב - המקום שבו מתאמנים הופכים לאלופים! הצטרפו אלינו לאימונים אישיים וקבוצתיים המותאמים לכל רמה.">
+    <link rel="preload" href="images/pal-shalev-hero.webp" as="image">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" as="style">
 </head>
 <body>
 
@@ -45,7 +47,7 @@
     <div class="hero-container">
         <!-- Studio Logo -->
         <div class="hero-logo-container">
-            <img src="images/pal-shalev-logo.png" alt="Pal Fitness Club Logo" class="hero-logo">
+            <img src="/images/pal-shalev-logo.png" alt="Pal Fitness Club Logo" class="hero-logo" width="100" height="100">
         </div>
 
         <!-- Studio Name -->
@@ -76,7 +78,8 @@
             <div class="about-image">
                 <div class="about-image">
                     <img 
-                        src="images/studio-pic.webp" 
+                        src="images/studio-pic.webp"
+                        loading="lazy"
                         alt="תמונה של הסטודיו של פאל פיטנס קלאב" 
                         id="studio-image"
                         data-hover-src="images/pal-shalevowner.webp"
