@@ -224,7 +224,7 @@ body {
 #hero {
     position: relative;
     background: linear-gradient(120deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), 
-        url('/images/pal-shalev-hero.jpg') no-repeat center center/cover;
+        url('/images/pal-shalev-hero.webp') no-repeat center center/cover;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -1351,4 +1351,3 @@ form button:hover {
 ::-webkit-scrollbar-track:hover {
     background: #222; /* Slightly lighter when hovered */
 }
-
