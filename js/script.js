@@ -10,11 +10,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Hamburger Menu Toggle
-const hamburger = document.getElementById("hamburger");
+const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
-if (hamburger && navLinks) {
-    hamburger.addEventListener("click", () => navLinks.classList.toggle("active"));
-}
+
+hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    hamburger.classList.toggle("active");
+});
 
 // Scroll to Specific Section
 const scrollToSection = id => {
@@ -29,6 +31,22 @@ const currentYearElement = document.getElementById("current-year");
 if (currentYearElement) {
     currentYearElement.textContent = new Date().getFullYear();
 }
+
+const imageElement = document.getElementById('studio-image');
+
+// Create hover image element
+const hoverImage = document.createElement('img');
+hoverImage.src = imageElement.getAttribute('data-hover-src');
+hoverImage.classList.add('hover-effect');
+
+// Append hover image as a sibling
+imageElement.parentElement.appendChild(hoverImage);
+
+// Optionally, remove hover image on page unload (cleanup)
+window.addEventListener('beforeunload', () => {
+    hoverImage.remove();
+});
+
 
 // Contact Form Submission
 const contactForm = document.getElementById("contact-form");
