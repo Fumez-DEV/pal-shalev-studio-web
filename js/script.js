@@ -9,13 +9,40 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Hamburger Menu Toggle
+function scrollToContact() {
+    // Get the contact section by its ID
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+        contactSection.scrollIntoView({
+            behavior: 'smooth', // Smooth scroll animation
+            block: 'start' // Align to the top of the section
+        });
+    }
+}
+
+// Scroll to Services Section
+function scrollToServices() {
+    const servicesSection = document.getElementById("services");
+    servicesSection.scrollIntoView({ behavior: "smooth" });
+}
+
+// Navbar Scroll Effect
+window.addEventListener("scroll", () => {
+    const navbar = document.getElementById("navbar");
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+
+// Mobile Menu Toggle
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
 
 hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
     hamburger.classList.toggle("active");
+    navLinks.classList.toggle("active");
 });
 
 // Scroll to Specific Section
@@ -157,6 +184,7 @@ function showAlert(message, type) {
         setTimeout(() => alertBox.remove(), 500);
     }, 5000);
 }
+
 document.addEventListener("DOMContentLoaded", () => {
     const faqContainer = document.getElementById("faq-container");
     const jsonPath = "json/faq-data.json"; // Path to your JSON file
@@ -167,62 +195,65 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await fetch(jsonPath);
             const data = await response.json();
 
-            // Select 4 random FAQs
-            const selectedFAQs = data.sort(() => Math.random() - 0.5).slice(0, 4);
+            // Check if FAQs are already stored and not expired
+            const storedFAQs = localStorage.getItem("selectedFAQs");
+            const lastUpdate = localStorage.getItem("lastUpdate");
 
-            // Clear existing FAQs
-            faqContainer.innerHTML = "";
+            const today = new Date();
+            const midnight = new Date(today);
+            midnight.setHours(0, 0, 0, 0);
 
-            // Render selected FAQs
-            selectedFAQs.forEach(faq => {
-                const faqItem = document.createElement("div");
-                faqItem.className = "faq-item";
-
-                const question = document.createElement("button");
-                question.className = "faq-question";
-                question.textContent = faq.question;
-
-                const answer = document.createElement("div");
-                answer.className = "faq-answer";
-                answer.textContent = faq.answer;
-
-                // Add click functionality to toggle answer visibility
-                question.addEventListener("click", () => {
-                    const isActive = answer.style.display === "block";
-                    document.querySelectorAll(".faq-answer").forEach(el => el.style.display = "none");
-                    document.querySelectorAll(".faq-question").forEach(el => el.classList.remove("active"));
-
-                    if (!isActive) {
-                        answer.style.display = "block";
-                        question.classList.add("active");
-                    }
-                });
-
-                faqItem.appendChild(question);
-                faqItem.appendChild(answer);
-                faqContainer.appendChild(faqItem);
-            });
+            if (storedFAQs && lastUpdate && new Date(lastUpdate) >= midnight) {
+                // Use stored FAQs if it's still the same day
+                renderFAQs(JSON.parse(storedFAQs));
+            } else {
+                // Select 4 random FAQs and store them
+                const selectedFAQs = data.sort(() => Math.random() - 0.5).slice(0, 4);
+                localStorage.setItem("selectedFAQs", JSON.stringify(selectedFAQs));
+                localStorage.setItem("lastUpdate", new Date());
+                renderFAQs(selectedFAQs);
+            }
         } catch (error) {
             console.error("Failed to load FAQ data:", error);
         }
     };
 
-    // Update FAQ daily at 00:00 GMT+2
-    const updateFAQDaily = () => {
-        const now = new Date();
-        const nextUpdate = new Date();
-        nextUpdate.setUTCHours(22, 0, 0, 0); // 00:00 GMT+2 is 22:00 GMT
-        if (now > nextUpdate) {
-            nextUpdate.setDate(nextUpdate.getDate() + 1);
-        }
-        const timeUntilUpdate = nextUpdate - now;
-        setTimeout(() => {
-            loadFAQ();
-            updateFAQDaily();
-        }, timeUntilUpdate);
+    // Render FAQs
+    const renderFAQs = (faqs) => {
+        // Clear existing FAQs
+        faqContainer.innerHTML = "";
+
+        // Render provided FAQs
+        faqs.forEach(faq => {
+            const faqItem = document.createElement("div");
+            faqItem.className = "faq-item";
+
+            const question = document.createElement("button");
+            question.className = "faq-question";
+            question.textContent = faq.question;
+
+            const answer = document.createElement("div");
+            answer.className = "faq-answer";
+            answer.textContent = faq.answer;
+
+            // Add click functionality to toggle answer visibility
+            question.addEventListener("click", () => {
+                const isActive = answer.style.display === "block";
+                document.querySelectorAll(".faq-answer").forEach(el => el.style.display = "none");
+                document.querySelectorAll(".faq-question").forEach(el => el.classList.remove("active"));
+
+                if (!isActive) {
+                    answer.style.display = "block";
+                    question.classList.add("active");
+                }
+            });
+
+            faqItem.appendChild(question);
+            faqItem.appendChild(answer);
+            faqContainer.appendChild(faqItem);
+        });
     };
 
     // Initial load
     loadFAQ();
-    updateFAQDaily();
 });
